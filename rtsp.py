@@ -1,11 +1,9 @@
 import cv2
 import threading
-import redis
 import pika
 import json
 
 #Connections
-r = redis.Redis(host='192.168.1.100', port=6379, decode_responses=True)
 connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.1.100'))
 channel = connection.channel()
 channel.queue_declare(queue="rtsp_microservice", durable=True)
@@ -54,7 +52,7 @@ stream1 = Rtsp("Parking1", "rtsp://192.168.1.71/profile1", [(838.2322713257961, 
           1430.4213771839663), (1269.8869475847887, 1230.6269270298042), (1103.8026721479953, 1228.1603288797528), (964.0287769784168,
           1224.0493319630004)], 3)
 
-stream2 = Rtsp("Parking2", "rtsp://192.168.1.111:1024/h264_ulaw.sdp",  [(250.77476480354161, 266.98948533480893), (194.82567791920297,
+stream2 = Rtsp("Parking2", "rtsp://192.168.1.119:1024/h264_ulaw.sdp",  [(250.77476480354161, 266.98948533480893), (194.82567791920297,
           344.18926397343637), (316.3530713890424, 341.2008854454895), (437.88046485888185, 339.8727172108465), (557.2495849474263,
           335.5561704482566), (503.12672938572183, 262.8389596015494), (418.9540675152183, 264.16712783619244), (334.9474266740452,
           265.1632540121747)], 3)
